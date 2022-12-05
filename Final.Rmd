@@ -1,0 +1,70 @@
+---
+title: "Investigating Global PLastic Emissions in the Ocean"
+subtitle: "To stop the secret business of Plastic Waste, Resorting to new ways to edge away from a Plastic Planet"
+output: html_document
+date: "2022-12-05"
+---
+
+```{r}
+# libraries -- please put them all here, so we don't have duplicates 
+library(tidyverse)
+
+
+```
+
+```{r include = FALSE}
+# this chunk DOES NOT RUN
+# this chunk is for formatting code so that other people can copy the correct graph formats + colors + etc
+# please update accordingly
+# e.g. "color1 = #123456"
+
+
+```
+
+## Intro
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+```{r}
+# VISUALIZATION 1: THE LIFE CYCLE OF CANADIAN PLASTIC: ANDREW
+```
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```{r}
+# VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
+
+```
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```{r}
+# VISUALIZATION 2.5: COMPARING THE WORLD'S OCEAN PLASTIC IMPORTS/EXPORTS ALSO ANDREW
+# labelling this one as 2.5 because 1, im not sure we need it considering Viz 2 and 3, and 2, I dont know how we'd actually #implement something like this (but maybe someone knows more than me) - steph
+
+
+```
+
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+```{r}
+# VISUALIZATION 3: HOW IS OCEAN PLASTIC PRODUCTION RELATED TO OCEAN PLASTIC EXPORTS? STEPHANIE
+```
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```{r}
+# VISUALIZATION 4: HAVE INNOVATIONS IN PLASTIC REDUCTING TECHNOLOGIES INCREASED LATELY? PURUMIDHA
+
+```
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```{r}
+# VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? sANJANA
+```
+
+## Conclusion 
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
