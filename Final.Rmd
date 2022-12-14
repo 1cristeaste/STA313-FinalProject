@@ -187,3 +187,9 @@ Next, we need to understand what technologies are being invented in waste manage
 ## Conclusion 
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+\newpage 
+
+## References 
+
+1. Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
