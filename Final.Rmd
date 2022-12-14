@@ -5,7 +5,7 @@ output: html_document
 date: "2022-12-05"
 ---
 
-```{r}
+```{r, echo=FALSE}
 # Loading Libraries -- please put them all here, so we don't have duplicates 
 library(tidyverse)
 library(lineupjs)
@@ -37,20 +37,20 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE,
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 1: THE LIFE CYCLE OF CANADIAN PLASTIC: ANDREW
 ```
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
 
 ```
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 2.5: COMPARING THE WORLD'S OCEAN PLASTIC IMPORTS/EXPORTS ALSO ANDREW
 # labelling this one as 2.5 because 1, im not sure we need it considering Viz 2 and 3, and 2, I dont know how we'd actually #implement something like this (but maybe someone knows more than me) - steph
 
@@ -70,7 +70,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 So far, we've only mentioned about problems related to global plastic emissions in ocean, however, lets now delve into possible innovative solutions to stop our world from being a plastic planet. 
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 4: HAVE INNOVATIONS IN PLASTIC REDUCTING TECHNOLOGIES INCREASED LATELY? PURUMIDHA
 
 innovation_patents <- read_excel("new invention patents from 1970-2017 newxlsx.xlsx")
@@ -180,7 +180,7 @@ Next, we need to understand what technologies are being invented in waste manage
 
 
 ## Where are some of the best waste management techniques placed? How can we reciprocate the best waste management strategies from countries that handle it the best? 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? SANJANA
 ```
 
