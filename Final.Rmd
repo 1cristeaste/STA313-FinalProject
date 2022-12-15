@@ -77,6 +77,16 @@ world_sf_proj = st_transform(world_sf, crs = 3785)
 world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports", maxSizeError = 1.0001, itermax=100)
 world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports", maxSizeError = 1.0001, itermax=600)
 
+# Add strangely missing data
+world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "France")] <- 43518.54
+world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Sweden")] <- 60238.99
+world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Greenland")] <- 54570.38
+world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Norway")] <- 89202.75
+world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "France")] <- 43518.54
+world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Sweden")] <- 60238.99
+world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Greenland")] <- 54570.38
+world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Norway")] <- 89202.75
+
 ggplot(world_cartogram_exports) +
   geom_sf(aes(fill = gdpPercap), color = "gray30") +
   scale_fill_gradientn(colours = p) + 
