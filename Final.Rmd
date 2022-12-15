@@ -8,6 +8,17 @@ date: "2022-12-15"
 
 ```{r, echo=FALSE}
 # Loading Libraries -- please put them all here, so we don't have duplicates 
+install.packages("cartogram")
+library(RColorBrewer)
+library(maptools)
+library(ggmap)
+library(rgeos)
+library(sf)
+library(rgdal)
+library(cartogram)
+require(rgdal)
+library(raster)
+library(dplyr)
 library(tidyverse)
 library(lineupjs)
 library(shiny)
@@ -16,6 +27,8 @@ library(crosstalk)
 library(lineupjs)
 library(magrittr)
 library(readxl)
+library(sf)
+library(spData)
 ```
 
 ```{r setup, echo=FALSE, include=FALSE}
@@ -48,26 +61,11 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 ```{r}
-install.packages("cartogram")
-library(RColorBrewer)
-library(maptools)
-library(ggmap)
-library(rgeos)
-library(sf)
-library(rgdal)
-library(cartogram)
-require(rgdal)
-library(raster)
-library(dplyr)
 plastic <- read.csv(file = 'plastic-pollution.csv')
 head(plastic)
 plastic <- plastic[!with(plastic,is.na(Waste.exports)|is.na(Waste.imports)|is.na(Waste.exports.per.capita)|is.na(Waste.imports.per.capita)),]
 p <- colorRampPalette(c("white", "red"))(128)
 palette(p)
-library(sf)
-library(spData)
-library(cartogram)
-library(tidyverse)
 world2 <- merge(world, plastic, by.x='name_long', by.y='Entity')
 world2 <- world2 %>%
   arrange(name_long, -Year) %>%
