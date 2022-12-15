@@ -1,15 +1,27 @@
 ---
 title: "Investigating Global PLastic Emissions in the Ocean"
 subtitle: "To stop the secret business of Plastic Waste, Resorting to new ways to edge away from a Plastic Planet"
+author: "Team Diamond Ocean: Purumidha Sharma, Sanjana Girish, Stephanie Cristea, Anita Zabojnikova, Andrew Gritsevskiy, and Danur Mahendra"
 output: html_document
-date: "2022-12-05"
+date: "2022-12-15"
 ---
 
-```{r}
-# libraries -- please put them all here, so we don't have duplicates 
+```{r, echo=FALSE}
+# Loading Libraries -- please put them all here, so we don't have duplicates 
 library(tidyverse)
+library(lineupjs)
+library(shiny)
+library(shinyWidgets)
+library(crosstalk)
+library(lineupjs)
+library(magrittr)
+library(readxl)
+```
 
-
+```{r setup, echo=FALSE, include=FALSE}
+# To collapse warnings and messages 
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, 
+                     error=FALSE)
 ```
 
 ```{r include = FALSE}
@@ -21,25 +33,25 @@ library(tidyverse)
 
 ```
 
-## Intro
+## Introduction
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 1: THE LIFE CYCLE OF CANADIAN PLASTIC: ANDREW
 ```
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
 
 ```
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r}
+```{r, echo=FALSE}
 # VISUALIZATION 2.5: COMPARING THE WORLD'S OCEAN PLASTIC IMPORTS/EXPORTS ALSO ANDREW
 # labelling this one as 2.5 because 1, im not sure we need it considering Viz 2 and 3, and 2, I dont know how we'd actually #implement something like this (but maybe someone knows more than me) - steph
 
@@ -54,17 +66,131 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r}
+
+## Have innovations in plastic reducing technologies increased lately? Are there emerging technologies that can help clean plastic waste in oceans? 
+
+So far, we've only mentioned about problems related to global plastic emissions in ocean, however, lets now delve into possible innovative solutions to stop our world from being a plastic planet. 
+
+```{r, echo=FALSE}
 # VISUALIZATION 4: HAVE INNOVATIONS IN PLASTIC REDUCTING TECHNOLOGIES INCREASED LATELY? PURUMIDHA
+
+innovation_patents <- read_excel("new invention patents from 1970-2017 newxlsx.xlsx")
+
+.lineupDefaultOptions <- list(
+  filterGlobally = TRUE,
+  singleSelection = FALSE,
+  animated = TRUE,
+  sidePanel = "collapsed",
+  hierarchyIndicator = TRUE,
+  labelRotation = 0,
+  rowHeight = 18,
+  rowPadding = 2,
+  groupHeight = 40,
+  groupPadding = 5,
+  summaryHeader = TRUE,
+  overviewMode = TRUE,
+  expandLineOnHover = TRUE,
+  defaultSlopeGraphMode = "item",
+  ignoreUnsupportedBrowser = FALSE
+)
+# clean the data: 
+
+innovation_patents_new <- innovation_patents %>% 
+                              janitor::clean_names()
+
+#new_innovation_patents_redefine <- innovation_patents_new %>% group_by(waste_management_type) %>% 
+  #summarise(n = n(), sum_num = sum(worldwide_number_of_patented_innovations_in_plastic_reducing_technologies)) %>%
+ # mutate(average_patented_innovations = round(sum_num/n))
+
+#new_data <- left_join(innovation_patents_redefine,new_innovation_patents_redefine )
+
+
+innovation_patents_cleaned <- innovation_patents_new %>% 
+  `row.names<-`(., NULL) %>% 
+  pivot_wider(names_from = waste_management_type,
+              values_from = worldwide_number_of_patented_innovations_in_plastic_reducing_technologies) %>% column_to_rownames(var = "year") 
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  titlePanel("Worldwide Patented Innovations in Plastic Reducing Technologies"),
+  fluidRow(column(12, align = 'top',
+                  wellPanel(style = "background-color: #D0ECFA; border-color: #2c3e50; border-size: 10px; height: 193px; width: 725px",
+                            p(tags$b("Average Patented Innovations in Plastic Reducing Technologies (1990-2017)", style = "font-size: 80%")),
+                            p(em(tags$b("Prevention and Recycling: 513", style = "font-size: 65%"))),
+                            p(em(tags$b("Biobased feedstock: 318", style = "font-size: 65%"))),
+                            p(em(tags$b("Waste Prevention: 287", style = "font-size: 65%"))),
+                            p(em(tags$b("Waste Recycling: 226", style = "font-size: 65%"))),
+                             p(em(tags$b("Conversion/disposal of waste and leakage removal: 197", style = "font-size: 65%")))
+                           ))),
+  fluidRow(column(10, align = "left", lineupOutput("lineup1"),
+           tags$head(
+             HTML(
+               "
+          <script>
+          var socket_timeout_interval
+          var n = 0
+          $(document).on('shiny:connected', function(event) {
+          socket_timeout_interval = setInterval(function(){
+          Shiny.onInputChange('count', n++)
+          }, 15000)
+          });
+          $(document).on('shiny:disconnected', function(event) {
+          clearInterval(socket_timeout_interval)
+          });
+          </script>
+          "
+             )
+           ), textOutput("keepAlive"),
+    tags$head(tags$style(type="text/css", "label{ display: table-cell; text-align: center; vertical-align: middle; } .form-group { display: table-row;}")
+    ), tags$h2("New Innovation Technologies: "),
+    setBackgroundImage(
+      src = "https://i.pinimg.com/originals/6b/8d/09/6b8d09037774b132e1f1c9ad50b70c92.jpg"),
+    p(strong(code("Prevention and Recycling: Collecting leftover plastic to be used in road construction/bike pathway technologies"))), 
+    p(strong(code("Waste Recycling: Using AI generated fungal enzyme to recycle/reduce the hardest of plastics in oceans"))), 
+    p(strong(code("Waste Prevention: Having Government run incentive programs so that businesses can leverage creativity to prevent plastic use, and fine heavily for rule breakers"))),
+    p(strong(code("Biobased Feedstock: BP Infinia technology to turn difficult plastic waste into recycled feedstock, Using Technology to make Biobased polymers which is from agricultural byproducts or feedstocks subtitute"))),
+    p(strong(code("Conversion or Disposal of Waste and Leakage Removal: Cat-HTR Technology uses heat/pressure to convert waste plastic back into the chemical and oils it was made from")))
+  )))
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  shared_patent_innovation <- SharedData$new(innovation_patents_cleaned)
+  
+  output$keepAlive <- renderText({
+    req(input$count)
+    paste("", input$count)
+  })
+  
+  
+  output$lineup1 <- renderLineup({
+    lineup(shared_patent_innovation, width = "60%", options = c(.lineupDefaultOptions), 
+           ranking = lineupRanking(columns = c("*")))
+
+  })  }
+ 
+
+
+# Run the application
+shinyApp(ui = ui, server = server)
 
 ```
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+As we can see here, this visualization emphasizes how innovations in technologies that reduce plastic waste are increasing in modern times compared to the 1990s. It also helps in decoding areas, such as, plastic conversion/leakage removal, that need improvements in innovations (has least amount of innovations: 197) so that we can create a circular economy (eliminate the concept of waste).If we look at the best invested innovation sectors in waste management types, combined Prevention and Recycling wins it! In fact, this is very important because if we solve the root cause of plastic waste pollution, none of it will dwell into the oceans. 
 
-```{r}
-# VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? sANJANA
+Next, we need to understand what technologies are being invented in waste management types, such as, waste prevention, to combat plastic waste in ocean? As mentioned at the bottom of the visualization, there are new technologies such as CAT-HTR which is to convert all types of plastic back into the chemicals and oil it was composed of. We know that conversion of plastic/leakage removal has lowest innovations, however, this one technology can revolutionize this sector in plastic reduction. To create a compelling plan of action in plastic waste management, we need to look into the countries which have best waste management strategies/policies so that other countries could mimic that. 
+
+
+## Where are some of the best waste management techniques placed? How can we reciprocate the best waste management strategies from countries that handle it the best? 
+```{r, echo=FALSE}
+# VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? SANJANA
 ```
 
 ## Conclusion 
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+\newpage 
+
+## References 
+
+1. Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
