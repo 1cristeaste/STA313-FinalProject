@@ -1,0 +1,328 @@
+---
+title: "Untitled"
+author: "Andrew"
+date: "12/15/2022"
+output: html_document
+---
+
+
+```{r}
+install.packages("cartogram")
+```
+
+```{r}
+library(RColorBrewer)
+library(maptools)
+library(ggmap)
+library(rgeos)
+library(sf)
+library(rgdal)
+library(cartogram)
+require(rgdal)
+library(raster)
+library(dplyr)
+```
+
+```{r}
+# shpfile <- "World_Countries__Generalized_.shp"
+# sh <- readShapePoly(shpfile)
+# plot(sh)
+```
+
+```{r}
+# sh@data
+```
+
+```{r}
+# v <- c('United States','Andorra','Angola', 'Belgium')
+```
+
+```{r}
+# sh@data <- sh@data[sh@data$COUNTRY %in% v, ]
+```
+
+```{r}
+# sh@data
+```
+
+```{r}
+plastic <- read.csv(file = 'plastic-pollution.csv')
+head(plastic)
+```
+
+```{r}
+# plastic[is.na(plastic)] <- 0
+```
+
+```{r}
+# plastic
+```
+
+```{r}
+plastic <- plastic[!with(plastic,is.na(Waste.exports)|is.na(Waste.imports)|is.na(Waste.exports.per.capita)|is.na(Waste.imports.per.capita)),]
+```
+
+```{r}
+# Remove any duplicates, keeping only the most recent year
+# plastic <- plastic %>%
+#   arrange(Entity, -Year) %>%
+#   filter(duplicated(Entity) == FALSE)
+```
+
+```{r}
+# subset( plastic, Entity=='United States' )
+```
+
+```{r}
+# plastic$Waste.imports
+```
+
+```{r}
+# v <- plastic$Entity
+```
+
+```{r}
+# sh@data <- sh@data[sh@data$COUNTRY %in% v, ]
+```
+
+```{r}
+# sh2 <- merge(sh, plastic, by.x='COUNTRY', by.y='Entity')
+```
+
+```{r}
+# head(sh2@data)
+```
+
+```{r}
+# subset( sh2@data, COUNTRY=='United States' )
+```
+
+```{r}
+# sh2@data <- sh2@data[!with(sh2@data,is.na(Waste.exports)|is.na(Waste.imports)|is.na(Waste.exports.per.capita)|is.na(Waste.imports.per.capita)),]
+```
+
+```{r}
+# log((pop - min(pop))/diff(range(pop))*127+1)
+```
+
+```{r}
+p <- colorRampPalette(c("white", "red"))(128)
+palette(p)
+
+# Scale the total population to the palette
+# pop <- sh2@data$Waste.exports
+# cols <- 26.3*log((pop - min(pop))/diff(range(pop))*127+1)
+# plot(sh, col=cols)
+```
+
+```{r}
+# p <- colorRampPalette(brewer.pal(11, 'Spectral'))(128)
+# palette(rev(p))
+# plot(sh2, col=cols)
+```
+
+```{r}
+# sh2@data
+```
+
+```{r}
+# length(sh2$Waste.exports)
+```
+
+```{r}
+# sh2@data$Waste.exports
+```
+
+```{r}
+# install.packages("cartogram")
+```
+
+```{r}
+# library(cartogram)
+```
+
+```{r}
+# sh2@data
+```
+
+```{r}
+# rownames(sh2@data) <- 1:nrow(sh2@data)
+```
+
+```{r}
+# sfno <- st_as_sf(sh2)
+# st_crs(sfno)
+# sfnoproj <- st_transform(sfno, crs = 3162)
+# st_crs(sfnoproj)
+```
+
+```{r}
+# cartogram <- cartogram_cont(st_as_sf(sh2), weight = "Waste.exports", itermax = 7)
+# q = rev(p)
+```
+
+```{r}
+# ggplot(cartogram) +
+#   geom_sf(aes(fill = Waste.imports), color = "gray30") +
+#   scale_fill_gradientn(colours = p)
+```
+
+```{r}
+# library(maptools)
+# data(wrld_simpl)
+```
+
+```{r}
+# plot(wrld_simpl)
+```
+
+```{r}
+# wrld_simpl@data
+```
+
+```{r}
+# ws2 <- merge(wrld_simpl, plastic, by.x='NAME', by.y='Entity')
+```
+
+```{r}
+# ws2@data
+```
+
+```{r}
+# ws2@data[is.na(ws2@data)] <- 0
+```
+
+```{r}
+# ws2@data
+```
+
+```{r}
+# ws2@data$Waste.exports
+```
+
+```{r}
+# log(ws2@data$Waste.exports + 2.718281828)
+```
+
+```{r}
+# ws2@data$WE <- log(ws2@data$Waste.exports + 2.718281828)
+```
+
+```{r}
+# sfno <- st_as_sf(ws2)
+# st_crs(sfno)
+# sfnoproj <- st_transform(sfno, crs = 6893)
+# st_crs(sfnoproj)
+# afr_cartogram <- cartogram_cont(sfnoproj, "WE", itermax=15)
+ 
+# This is a new geospatial object, we can visualise it!
+# plot(afr_cartogram)
+```
+
+```{r}
+# ggplot(afr_cartogram) +
+#   geom_sf()
+```
+
+```{r}
+library(sf)
+library(spData)
+library(cartogram)
+library(tidyverse)
+```
+
+```{r}
+# world
+```
+
+```{r}
+# wr$Entity
+```
+
+```{r}
+world2 <- merge(world, plastic, by.x='name_long', by.y='Entity')
+```
+
+```{r}
+# head(world2)
+```
+
+```{r}
+# hist(world2$pop)
+```
+
+```{r}
+# hist(world2$Waste.exports)
+```
+
+```{r}
+# world2[is.na(world2)] <- 0
+```
+
+```{r}
+# world2
+```
+
+```{r}
+world2 <- world2 %>%
+  arrange(name_long, -Year) %>%
+  filter(duplicated(name_long) == FALSE)
+```
+
+```{r}
+# subset( world2, name_long=='United States' )
+```
+
+```{r}
+world_sf = st_as_sf(world2)
+world_sf_proj = st_transform(world_sf, crs = 3785)
+world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports")#, itermax = 20)
+world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports")#, itermax = 20)
+
+#plot(st_geometry(world_cartogram))
+```
+
+```{r}
+#ggplot(world_cartogram_exports) +
+#  geom_sf()
+```
+
+```{r}
+ggplot(world_cartogram_exports) +
+  geom_sf(aes(fill = gdpPercap), color = "gray30") +
+  scale_fill_gradientn(colours = p) + 
+  ggtitle("Countries of the World Scaled by Plastic Waste Exports") + 
+  labs(fill = "GDP per capita (PPP, 2017)")
+```
+
+```{r}
+ggplot(world_cartogram_imports) +
+  geom_sf(aes(fill = gdpPercap), color = "gray30") +
+  scale_fill_gradientn(colours = p) + 
+  ggtitle("Countries of the World Scaled by Plastic Waste Imports") + 
+  labs(fill = "GDP per capita (PPP, 2017)")
+```
+
+```{r}
+world2$gdp <- world2$gdpPercap * world2$pop
+
+model <- lm(world2$Waste.exports ~ world2$gdp)
+
+rsq <- summary(model)$r.squared
+```
+
+However, there is a significant difference in how much plastic is imported and exported by country. As is visible from the visualization above, North American and European countries are responsible for a highly disproportionate number of plastic waste exports, the majority of which end up in countries such as China, Malaysia, India, and the Philippines. As such, it is important for wealthier countries to recognize the extent to which they contribute to global plastic waste, even though on a country-level scale, it may seem as if plastic is being properly disposed of. In fact, it is a shared global responsibility to end the export of plastic waste to other countries, as it poses a significant environmental threat. The plastic waste that is exported from countries like Canada often ends up in other countries that may lack the capacity to manage it safely, leading to pollution of air and water, and an increased risk of public health issues. To address this, countries must take steps to reduce their plastic waste, improve their waste management and recycling systems, and ensure that any plastic waste that *is* exported is managed safely. This will help reduce the environmental damage caused by plastic waste and ensure that all countries take responsibility for their plastic waste.
+
+While the amount of plastic ending up in unsafe storage and in oceans is inversely correlated with a country's wealth, it is nevertheless the case that the number of plastic exports is positively correlated (r^2=`r toString(rsq)`). Therefore, on average, the wealthier the country, the more plastic waste it tends to offload on poorer countries without the appropriate infrastructure. In fact, it may be the case that wealthy countries are better off throwing away plastic into landfills, which in the U.S. and Canada are incredibly well regulated and leakproof, rather than applying an out-of-sight-out-of-mind approach, which plastic waste exports are symptomatic of.
+
+
+```{r}
+#devtools::install_github("walkerke/bsselectR")
+```
+```{r}
+#library(bsselectR)
+#options <- c("Scale by Imports", 
+#            "Scale by Exports")
+#bsselect(options, type = "text")
+```
+
