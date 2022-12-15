@@ -38,10 +38,6 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE,
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 
-```{r, echo=FALSE}
-# VISUALIZATION 1: THE LIFE CYCLE OF CANADIAN PLASTIC: ANDREW
-```
-
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 ```{r, echo=FALSE}
@@ -51,13 +47,58 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r, echo=FALSE}
-# VISUALIZATION 2.5: COMPARING THE WORLD'S OCEAN PLASTIC IMPORTS/EXPORTS ALSO ANDREW
-# labelling this one as 2.5 because 1, im not sure we need it considering Viz 2 and 3, and 2, I dont know how we'd actually #implement something like this (but maybe someone knows more than me) - steph
+```{r}
+install.packages("cartogram")
+library(RColorBrewer)
+library(maptools)
+library(ggmap)
+library(rgeos)
+library(sf)
+library(rgdal)
+library(cartogram)
+require(rgdal)
+library(raster)
+library(dplyr)
+plastic <- read.csv(file = 'plastic-pollution.csv')
+head(plastic)
+plastic <- plastic[!with(plastic,is.na(Waste.exports)|is.na(Waste.imports)|is.na(Waste.exports.per.capita)|is.na(Waste.imports.per.capita)),]
+p <- colorRampPalette(c("white", "red"))(128)
+palette(p)
+library(sf)
+library(spData)
+library(cartogram)
+library(tidyverse)
+world2 <- merge(world, plastic, by.x='name_long', by.y='Entity')
+world2 <- world2 %>%
+  arrange(name_long, -Year) %>%
+  filter(duplicated(name_long) == FALSE)
+world_sf = st_as_sf(world2)
+world_sf_proj = st_transform(world_sf, crs = 3785)
+world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports", itermax = 20)
+world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports", itermax = 20)
 
+ggplot(world_cartogram_exports) +
+  geom_sf(aes(fill = gdpPercap), color = "gray30") +
+  scale_fill_gradientn(colours = p) + 
+  ggtitle("Countries of the World Scaled by Plastic Waste Exports") + 
+  labs(fill = "GDP per capita (PPP, 2017)")
 
+ggplot(world_cartogram_imports) +
+  geom_sf(aes(fill = gdpPercap), color = "gray30") +
+  scale_fill_gradientn(colours = p) + 
+  ggtitle("Countries of the World Scaled by Plastic Waste Imports") + 
+  labs(fill = "GDP per capita (PPP, 2017)")
+
+world2$gdp <- world2$gdpPercap * world2$pop
+
+model <- lm(world2$Waste.exports ~ world2$gdp)
+
+rsq <- summary(model)$r.squared
 ```
 
+However, there is a significant difference in how much plastic is imported and exported by country. As is visible from the visualization above, North American and European countries are responsible for a highly disproportionate number of plastic waste exports, the majority of which end up in countries such as China, Malaysia, India, and the Philippines. As such, it is important for wealthier countries to recognize the extent to which they contribute to global plastic waste, even though on a country-level scale, it may seem as if plastic is being properly disposed of. In fact, it is a shared global responsibility to end the export of plastic waste to other countries, as it poses a significant environmental threat. The plastic waste that is exported from countries like Canada often ends up in other countries that may lack the capacity to manage it safely, leading to pollution of air and water, and an increased risk of public health issues. To address this, countries must take steps to reduce their plastic waste, improve their waste management and recycling systems, and ensure that any plastic waste that *is* exported is managed safely. This will help reduce the environmental damage caused by plastic waste and ensure that all countries take responsibility for their plastic waste.
+
+While the amount of plastic ending up in unsafe storage and in oceans is inversely correlated with a country's wealth, it is nevertheless the case that the number of plastic exports is positively correlated (r^2=`r toString(rsq)`). Therefore, on average, the wealthier the country, the more plastic waste it tends to offload on poorer countries without the appropriate infrastructure. In fact, it may be the case that wealthy countries are better off throwing away plastic into landfills, which in the U.S. and Canada are incredibly well regulated and leakproof, rather than applying an out-of-sight-out-of-mind approach, which plastic waste exports are symptomatic of.
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ```{r}
