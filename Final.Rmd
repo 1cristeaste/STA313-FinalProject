@@ -74,8 +74,8 @@ world2 <- world2 %>%
   filter(duplicated(name_long) == FALSE)
 world_sf = st_as_sf(world2)
 world_sf_proj = st_transform(world_sf, crs = 3785)
-world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports", maxSizeError = 1.0001)
-world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports", maxSizeError = 1.0001)
+world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports", maxSizeError = 1.0001, itermax=100)
+world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports", maxSizeError = 1.0001, itermax=600)
 
 ggplot(world_cartogram_exports) +
   geom_sf(aes(fill = gdpPercap), color = "gray30") +
