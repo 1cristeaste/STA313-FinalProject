@@ -59,8 +59,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country produces that ends up in the ocean.
 
 <div class='tableauPlaceholder' id='viz1671149266138' style='position: relative'>
-  <noscript><a href='#'><img alt='Ocean Plastic Waste Production by Country ' 
-                                                                                                       src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Oc&#47;OceanPlasticWasteProductionbyCountry&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript>
+  <noscript><a href='#'><img alt='Ocean Plastic Waste Production by Country '                                                                                     src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Oc&#47;OceanPlasticWasteProductionbyCountry&#47;Sheet1&#47;1_rss.png' style='border: none' />
+    </a>
+  </noscript>
   <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
     <param name='embed_code_version' value='3' /> 
     <param name='site_root' value='' />
