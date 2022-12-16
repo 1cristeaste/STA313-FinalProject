@@ -279,6 +279,8 @@ Based on our findings, we determined that although the majority of global plasti
 
 Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
 
+"Global Plastics Outlook: Worldwide patented inventions in environmentally relevant plastics technologies, 1990-2017." OECDiLibrary, 22 Feb. 2022, www.oecd-ilibrary.org/environment/innovation-in-plastics-prevention-and-recycling-have-grown-the-most_3e4e50b4-en.
+
 “Plastic or Rubber Exports by Country.” Plastic or Rubber Exports by Country US$000 2020 | WITS Data, https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub#. 
 
 Ritchie, Hannah, and Max Roser. “Plastic Pollution.” Our World in Data, 1 Sept. 2018, https://ourworldindata.org/plastic-pollution. 
