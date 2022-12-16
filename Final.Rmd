@@ -259,7 +259,6 @@ Next, we need to understand what technologies are being invented in waste manage
 ```{r, echo=FALSE}
 # VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? SANJANA
 
-
 graph6_data <- read_csv("Belgium recovers recycles everything municipal waste.csv")
 
 # Define UI for application that draws a histogram
@@ -359,13 +358,13 @@ server <- function(input, output) {
             theme(axis.text = element_text(size=11), 
                   axis.title = element_text(size=12, face="bold")) +
             labs(x = "Country", y = y_label) + 
-            geom_label(aes_string(y = input$wts, label = input$wts), hjust=-0.5,
+            geom_label(aes_string(y = input$wts, label = input$wts), hjust=-0.35,
                        fill=bar_fill_col) + 
             scale_y_continuous(limits=y_limit, breaks = y_breaks) + 
             scale_pattern_discrete(guide = guide_legend(nrow = 1))
         
         # set the height and width of this ggplot
-    }, height = 600, width = 800 )
+    }, height = 800, width = 610 )
     
     output$CountryText <- renderText({
         paste0(input$SelCountry)
@@ -387,6 +386,7 @@ server <- function(input, output) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
+
 From this visualization, we can see that leading countries in recycling having clear policy objectives, bigger government funding to invest in emerging technologies like CAT-HTR and focus on producer responsibility. However, there is no country that is excelling in all waste management strategies. Some countries focus more on incinerating waste, and funding is focused more towards waste minimization rather than recovery. Other countries allocate a higher budget towards waste recovery, implementing interesting techniques like smart waste bins, pneumatic waste pipes E-waste kiosks. In terms of the best policies, we can see above that Germany has better waste management strategies compared to United States. Through research, it's found that Germany has a policy called "Green Dot" which revolves around the crux that manufacturers and retailers will need to pay more if they are using plastics anywhere in their products. This leads to less plastic waste, and therefore creating less garbage to be recycled. The net result: "a drastic decline of about one million tons less garbage than normal every year" (*All about recycling in Germany* 2022). It is surprising to see that Korea has the best waste management strategies despite highly powerful countries which breed on innovation and technology such as, United States. Korea has a "pay-to-throw" policy which is if you have bought plastic, and need to dispose it, you will need to pay thrice the amount you bought it in for. This discourages use of plastic in the first place. These are some of the most effective waste management strategies from countries that can handle it the best. This policies should be mimicked in countries that are not able to manage plastic waste properly, such as, America, Canada, and Turkey.
 
 ## Limitations and Future Considerations  
