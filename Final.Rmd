@@ -401,6 +401,10 @@ shinyApp(ui = ui, server = server)
 From this visualization, we can see that leading countries in recycling having clear policy objectives, bigger government funding to invest in emerging technologies like CAT-HTR and focus on producer responsibility. However, there is no country that is excelling in all waste management strategies. Some countries focus more on incinerating waste, and funding is focused more towards waste minimization rather than recovery. Other countries allocate a higher budget towards waste recovery, implementing interesting techniques like smart waste bins, pneumatic waste pipes E-waste kiosks. 
 ```
 
+## Limitations and Future Considerations  
+
+WRITE ABOUT EACH LIMITATIONS FROM SECTION ABOVE ABOUT VALIDITY AND RELIABILITY OF OUR VISUALIZATION, AND END OFF ON HOW NEXT TIME WE COULD IMPROVE
+
 ## Conclusion 
 
 Based on our findings, we determined that although the majority of global plastic emission comes from developing nations particularly in southeast Asia, it does not depict an accurate picture as to who are ultimately responsible for the ever-increasing global plastic emission. We found that North American and European countries tend to export the majority of their emissions to Asian countries as opposed to self-disposal. Similarly, emissions from countries such as Malaysia and the Philippines tend to originate from foreign nations who export their waste to willing nations in exchange for economic gain. Fortunately with the use of modern technology, high-emission nations may implement more efficient systems and emulate waste management strategies from exemplary nations to reduce mismanaged waste.
