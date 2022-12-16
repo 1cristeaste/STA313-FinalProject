@@ -222,6 +222,7 @@ Next, we need to understand what technologies are being invented in waste manage
 ```{r, echo=FALSE}
 # VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? SANJANA
 
+
 graph6_data <- read_csv("Belgium recovers recycles everything municipal waste.csv")
 
 # Define UI for application that draws a histogram
@@ -269,10 +270,10 @@ server <- function(input, output) {
     output$graph6 <- renderPlot({
         if (is.null(input$choiceSelectize)) {
             filter_country <- graph6_data %>%
-            select(Country, input$wts)
+            dplyr::select(Country, input$wts)
         } else {filter_country <- graph6_data %>% 
                 filter(Country %in% input$choiceSelectize) %>%
-                select(Country, input$wts)}
+                dplyr::select(Country, input$wts)}
 
         # change attributes specific to each waste management category 
         if (input$wts == "Incineration_with_energy_recovery"){
