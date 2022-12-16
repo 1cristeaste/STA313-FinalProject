@@ -416,3 +416,11 @@ Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” 
 “Plastic or Rubber Exports by Country.” Plastic or Rubber Exports by Country US$000 2020 | WITS Data, https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub#. 
 
 Ritchie, Hannah, and Max Roser. “Plastic Pollution.” Our World in Data, 1 Sept. 2018, https://ourworldindata.org/plastic-pollution. 
+
+Hazlegreaves, Steph. “Which Countries Are the Most Efficient at Minimising Waste?” Open Access Government, 19 Oct. 2020, https://www.openaccessgovernment.org/which-countries-are-the-most-efficient-at-minimising-waste/96037/. 
+
+City of Toronto. “Solid Waste Reports &amp; Diversion Rates.” City of Toronto, 11 Apr. 2022, https://www.toronto.ca/services-payments/recycling-organics-garbage/solid-waste-reports/. 
+
+Epa, Nsw. “The Waste Hierarchy.” NSW Environment Protection Authority, 20 Oct. 2022, https://www.epa.nsw.gov.au/your-environment/recycling-and-reuse/warr-strategy/the-waste-hierarchy. 
+
+BigRentz, BigRentz. “Bigrentz.” BigRentz, 15 Oct. 2021, https://www.bigrentz.com/blog/smart-waste-management. 
