@@ -267,6 +267,136 @@ Next, we need to understand what technologies are being invented in waste manage
 ## Where are some of the best waste management techniques placed? How can we reciprocate the best waste management strategies from countries that handle it the best? 
 ```{r, echo=FALSE}
 # VISUALIZATION 5: WHERE ARE SOME OF THE BEST WASTE MANAGEMENT TECHNIQUES PLACED? SANJANA
+
+graph6_data <- read_csv("Belgium recovers recycles everything municipal waste.csv")
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Waste Treatment Strategies Across Countries"),
+
+    sidebarLayout(position = "right",
+        sidebarPanel(radioButtons(inputId = "wts", 
+                                  "Waste Treatment Strategy",
+                                  choiceNames = c("Recycling", 
+                                                  "Landfill",
+                                                  "Composting", 
+                                                  "Incineration With Energy Recovery"),
+                                  choiceValues=c("Recycling", 
+                                            "Landfill",
+                                            "Composting", 
+                                            "Incineration_with_energy_recovery")),
+                     selectInput(inputId= "choiceSelectize", 
+                                 "Select Countries:", 
+                                 choices = graph6_data$Country, 
+                                 multiple = TRUE),
+                     selectInput(inputId="AscOrDesc", "Order Bars by", 
+                                 choices = c("Ascending", "Descending")),
+                     selectInput(inputId="SelCountry", "Find out more about:", 
+                                 choices = graph6_data$Country),
+                     strong("Country:"),
+                     em(textOutput("CountryText", inline=T)),
+                     br(),
+                     strong("Waste Management Policy:"),
+                     textOutput("WMP_URL"),
+                     tags$a(href=textOutput("WMP_URL", inline=T), "Click here!"),
+                     br(),
+                     strong("Recycling Program:"),
+                     textOutput("RP_URL"),
+                     tags$a(href=textOutput("RP_URL", inline=T), "Click here!")),
+        # Show a plot of the generated distribution
+        mainPanel( plotOutput(outputId = "graph6",  width = "100%")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    
+    # subset countries and select necessary columns
+    output$graph6 <- renderPlot({
+        if (is.null(input$choiceSelectize)) {
+            filter_country <- graph6_data %>%
+            select(Country, input$wts, WMRP_Link, RP_link)
+        } else {filter_country <- graph6_data %>% 
+                filter(Country %in% input$choiceSelectize) %>%
+                select(Country, input$wts, WMRP_Link, RP_link)}
+        
+        # change attributes specific to each waste management category 
+        if (input$wts == "Incineration_with_energy_recovery"){
+            y_label <- "Incineration With Energy Recovery Rate (in %)"
+            bar_fill_col <- "#ffcccb"
+            y_limit <- c(0, 80)
+            y_breaks <- seq(0, 80, by = 5)
+            img <- "Incineration.png"
+        } else if (input$wts == "Recycling"){ 
+            y_label <- paste(input$wts, "Rate (in %)")
+            bar_fill_col <- "#d2f8d2"
+            y_limit <- c(0, 65)
+            img <- "Recycle.png"
+            y_breaks <- seq(0, 65, by = 5)
+        } else if (input$wts == "Landfill"){
+            y_label <- paste(input$wts, "Rate (in %)")
+            bar_fill_col <- "#d8cbc4"
+            y_limit <- c(0, 110)
+            y_breaks <- seq(0, 110, by = 5)
+            img <- "Landfill.png"
+        } else{ # composting
+            y_label <- paste(input$wts, "Rate (in %)")
+            bar_fill_col <- "#ADD8E6"
+            y_limit <- c(0, 37)
+            y_breaks <- seq(0, 37, by = 5)
+            img <- "Composting-3.png"
+        }
+        
+        # ascending and descending
+        if (input$AscOrDesc == "Ascending"){
+            filter_country$Country <- reorder(filter_country$Country, 
+                                              filter_country[[input$wts]])
+        } else { # Descending
+            filter_country$Country <- reorder(filter_country$Country, 
+                                              -filter_country[[input$wts]])
+        }
+
+        # plot the graph
+        ggplot(filter_country, aes(x=Country)) +
+            geom_bar_pattern(stat = "identity", aes_string(y=input$wts),
+                             fill = "white", colour=bar_fill_col,
+                             width=0.8, position = position_dodge(width=1), 
+                             pattern= 'image', pattern_type='tile',
+                             pattern_filename = img, pattern_scale=0.1) + 
+            coord_flip() +
+            theme(axis.text = element_text(size=11), 
+                  axis.title = element_text(size=12, face="bold")) +
+            labs(x = "Country", y = y_label) + 
+            geom_label(aes_string(y = input$wts, label = input$wts), hjust=-0.5,
+                       fill=bar_fill_col) + 
+            scale_y_continuous(limits=y_limit, breaks = y_breaks) + 
+            scale_pattern_discrete(guide = guide_legend(nrow = 1))
+        
+        # set the height and width of this ggplot
+    }, height = 600, width = 800 )
+    
+    output$CountryText <- renderPrint({
+        paste(input$SelCountry)
+    })
+    
+    output$WMPURL <- renderPrint({
+        data_row <- filter_country %>% filter(Country == input$SelCountry)
+        data_row[WMRP_Link]
+        print(data_row[WMRP_Link])
+    })
+    
+    output$RPURL <- renderPrint({
+        data_row <- filter_country %>% filter(Country == input$SelCountry)
+        data_row[RP_link]
+    })
+    
+    }
+
+# Run the application 
+shinyApp(ui = ui, server = server)
 ```
 
 ## Conclusion 
