@@ -48,10 +48,7 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE,
 
 ## Introduction
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Plastic has become a vital aspect in our everyday life. Its extensive range of applications allows for economic growth and is therefore a crucial component to many industrial and commercial purposes. However, most types of plastic contain non-biodegradable materials which require additional care for proper disposal. Wealthier nations who can afford to offload their share of the burden often do so at the expense of developing nations. In many cases, developing nations import plastic waste out of necessity in exchange for monetary benefits but do not have the capacity for a proper disposal. Nonetheless, it presents the image that developing nations, particularly in the SE Asia region, are ultimately responsible for the majority of global plastic emission. In this paper, we will first examine the origins of plastic waste and how nations use international trade as a means to dispose of their plastic emission. We will then present possible solutions to how global leaders and corporations can help reduce emission and implement efficient waste management strategies using modern technology. 
 
 
 # VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
@@ -269,7 +266,7 @@ Next, we need to understand what technologies are being invented in waste manage
 
 ## Conclusion 
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Based on our findings, we determined that although the majority of global plastic emission comes from developing nations particularly in southeast Asia, it does not depict an accurate picture as to who are ultimately responsible for the ever-increasing global plastic emission. We found that North American and European countries tend to export the majority of their emissions to Asian countries as opposed to self-disposal. Similarly, emissions from countries such as Malaysia and the Philippines tend to originate from foreign nations who export their waste to willing nations in exchange for economic gain. Fortunately with the use of modern technology, high-emission nations may implement more efficient systems and emulate waste management strategies from exemplary nations to reduce mismanaged waste.
 
 \newpage 
 
