@@ -1,14 +1,14 @@
 ---
-title: "Investigating Global PLastic Emissions in the Ocean"
-subtitle: "To stop the secret business of Plastic Waste, Resorting to new ways to edge away from a Plastic Planet"
+title: "Investigating Global Plastic Emissions in the Ocean"
 author: "Team Diamond Ocean: Purumidha Sharma, Sanjana Girish, Stephanie Cristea, Anita Zabojnikova, Andrew Gritsevskiy, and Danur Mahendra"
 output: html_document
 date: "2022-12-15"
 ---
 
-```{r, echo=FALSE}
+
+```{r, echo=FALSE, warning = FALSE, message = FALSE}
 # Loading Libraries -- please put them all here, so we don't have duplicates 
-install.packages("cartogram")
+#install.packages("cartogram")
 library(RColorBrewer)
 library(maptools)
 library(ggmap)
@@ -37,21 +37,10 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE,
                      error=FALSE)
 ```
 
-```{r include = FALSE}
-# this chunk DOES NOT RUN
-# this chunk is for formatting code so that other people can copy the correct graph formats + colors + etc
-# please update accordingly
-# e.g. "color1 = #123456"
+Plastic has become a vital aspect in our everyday life. Its extensive range of applications allows for economic growth and is therefore a crucial component to many industrial and commercial purposes. However, most types of plastic contain non-biodegradable materials which require additional care for proper disposal. Wealthier nations who can afford to offload their share of the burden often do so at the expense of developing nations. In many cases, developing nations import plastic waste out of necessity in exchange for monetary benefits but do not have the capacity for a proper disposal, meaning a significant portion gets expelled to the ocean. This presents the image that developing nations, particularly in the South-Eastern Asia area, are ultimately responsible for the majority of ocean waste. In this data-driven article, we will first examine the origins of ocean plastic and how nations use international trade as a means to dispose of their plastic emission. We will present innovative new technologies on the rise, as well as some of the best waste management policies that corporations and global leaders can mimic. Ultimately, plastic emissions has a global effect, and it's in the best interest of everyone to minimize plastic waste expelled to the ocean. 
 
 
-```
-
-## Introduction
-
-Plastic has become a vital aspect in our everyday life. Its extensive range of applications allows for economic growth and is therefore a crucial component to many industrial and commercial purposes. However, most types of plastic contain non-biodegradable materials which require additional care for proper disposal. Wealthier nations who can afford to offload their share of the burden often do so at the expense of developing nations. In many cases, developing nations import plastic waste out of necessity in exchange for monetary benefits but do not have the capacity for a proper disposal. Nonetheless, it presents the image that developing nations, particularly in the SE Asia region, are ultimately responsible for the majority of global plastic emission. In this data-driven article, we will first examine the origins of plastic waste and how nations use international trade as a means to dispose of their plastic emission. We will present innovative new technologies on the rise, as well as some of the best waste management policies that corporations and global leaders can mimic in countries that aren't able to handle it the best. Ultimately, plastic emission has a global effect and is therefore, in the best interest of everyone to minimize plastic emission and reduce the harms of climate change  
-
-
-# VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN?
+# Which Countries Contribute the Most Ocean Plastic?
 
 The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country emits that ends up in the ocean.
 
@@ -83,72 +72,34 @@ vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.
 var scriptElement = document.createElement('script');                    
 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 vizElement.parentNode.insertBefore(scriptElement, vizElement);               
-
 ```
               
-By far, the top producer of plastic waste that ends up in the ocean is the Philippines, producing 356,371 tons. This is almost three times the amount of the second highest producer, India. About 10 countries produce the bulk of the world’s plastic waste in oceans, most of which are in Asia. Only two of these countries are in the top ten for plastic waste production per capita: the Philippines and Malaysia. Most of the countries that have the highest waste per capita are tiny, developing countries such as Suriname, Saint Lucia, and Grenada, and have negligible total waste. People tend to focus on reducing plastic waste in the oceans by the countries that are the biggest producers, such as the top ten. In particular, the Philippines has the highest total waste production as well as the highest per capita waste production, so intervening there should be the first step.
+By far, the top producer of plastic waste that ends up in the ocean is the Philippines, producing 356,371 tons. This is almost three times the amount of the second highest producer, India. About 10 countries produce the bulk of the world’s plastic waste in oceans, most of which are in Asia. Only two of these countries are in the top ten for plastic waste production per capita: the Philippines and Malaysia. Most of the countries that have the highest waste per capita are tiny, developing countries such as Suriname, Saint Lucia, and Grenada, and have negligible total waste. As a result, a natural supposition is that these countries are in the most need of a waste emission and production intervention. However, this fails to account for plastic waste that is imported by these countries. The following visualizations will attempt to investigate where these plastic emissions are actually coming from. 
 
-## How do plasic imports and explorts affect countries' ultimate responsibilities for plastic pollution?
+## How do plastic imports and exports affect countries' ultimate responsibilities for plastic pollution?
 
-```{r}
-plastic <- read.csv(file = 'plastic-pollution.csv')
-head(plastic)
-plastic <- plastic[!with(plastic,is.na(Waste.exports)|is.na(Waste.imports)|is.na(Waste.exports.per.capita)|is.na(Waste.imports.per.capita)),]
-p <- colorRampPalette(c("white", "red"))(128)
-palette(p)
-world2 <- merge(world, plastic, by.x='name_long', by.y='Entity')
-world2 <- world2 %>%
-  arrange(name_long, -Year) %>%
-  filter(duplicated(name_long) == FALSE)
-world_sf = st_as_sf(world2)
-world_sf_proj = st_transform(world_sf, crs = 3785)
-world_cartogram_exports <- cartogram_cont(world_sf_proj, "Waste.exports", maxSizeError = 1.0001, itermax=100)
-world_cartogram_imports <- cartogram_cont(world_sf_proj, "Waste.imports", maxSizeError = 1.0001, itermax=600)
+ <div class='tableauPlaceholder' id='viz1671209802353' style='position: relative'><noscript><a href='#'><img alt='Plastic Imports and Exports by Country ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TestGraph3-DotMap&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TestGraph3-DotMap&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;TestGraph3-DotMap&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                
 
-# Add strangely missing data
-world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "France")] <- 43518.54
-world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Sweden")] <- 60238.99
-world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Greenland")] <- 54570.38
-world_cartogram_exports$gdpPercap[which(world_cartogram_exports$name_long == "Norway")] <- 89202.75
-world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "France")] <- 43518.54
-world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Sweden")] <- 60238.99
-world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Greenland")] <- 54570.38
-world_cartogram_imports$gdpPercap[which(world_cartogram_exports$name_long == "Norway")] <- 89202.75
-
-ggplot(world_cartogram_exports) +
-  geom_sf(aes(fill = gdpPercap), color = "gray30") +
-  scale_fill_gradientn(colours = p) + 
-  ggtitle("Countries of the World Scaled by Plastic Waste Exports") + 
-  labs(fill = "GDP per capita (PPP, 2017)")
-
-ggplot(world_cartogram_imports) +
-  geom_sf(aes(fill = gdpPercap), color = "gray30") +
-  scale_fill_gradientn(colours = p) + 
-  ggtitle("Countries of the World Scaled by Plastic Waste Imports") + 
-  labs(fill = "GDP per capita (PPP, 2017)")
-
-world2$gdp <- world2$gdpPercap * world2$pop
-
-model <- lm(world2$Waste.exports ~ world2$gdp)
-
-rsq <- summary(model)$r.squared
+``` {js, em, echo = FALSE}
+var divElement = document.getElementById('viz1671209802353');
+var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    
+var scriptElement = document.createElement('script');
+scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement); 
 ```
 
-However, there is a significant difference in how much plastic is imported and exported by country. As is visible from the visualization above, North American and European countries are responsible for a highly disproportionate number of plastic waste exports, the majority of which end up in countries such as China, Malaysia, India, and the Philippines. As such, it is important for wealthier countries to recognize the extent to which they contribute to global plastic waste, even though on a country-level scale, it may seem as if plastic is being properly disposed of. In fact, it is a shared global responsibility to end the export of plastic waste to other countries, as it poses a significant environmental threat. The plastic waste that is exported from countries like Canada often ends up in other countries that may lack the capacity to manage it safely, leading to pollution of air and water, and an increased risk of public health issues. To address this, countries must take steps to reduce their plastic waste, improve their waste management and recycling systems, and ensure that any plastic waste that *is* exported is managed safely. This will help reduce the environmental damage caused by plastic waste and ensure that all countries take responsibility for their plastic waste.
-
-While the amount of plastic ending up in unsafe storage and in oceans is inversely correlated with a country's wealth, it is nevertheless the case that the number of plastic exports is positively correlated (r^2=`r toString(rsq)`). Therefore, on average, the wealthier the country, the more plastic waste it tends to offload on poorer countries without the appropriate infrastructure. In fact, it may be the case that wealthy countries are better off throwing away plastic into landfills, which in the U.S. and Canada are incredibly well regulated and leakproof, rather than applying an out-of-sight-out-of-mind approach, which plastic waste exports are symptomatic of.
-
-
-## Where is Ocean Plastic Coming From?
+There is a significant difference in how much plastic is imported and exported by country. As is visible from the visualization above, North American and European countries are responsible for a highly disproportionate number of plastic waste exports, the majority of which end up in countries such as China, Malaysia, India, and the Philippines. 
 
 <div class='tableauPlaceholder' id='viz1671140584156' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;test_16711405742330&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='test_16711405742330&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;test_16711405742330&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                
 
 
-```{js, embedcode, echo = FALSE}
+```{js, embedce, echo = FALSE}
                var divElement = document.getElementById('viz1671140584156');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);        
 ```
 
-The figure above demonstrates the trend between exported plastic and plastic that ends up in the ocean. The countries that export the most plastic are also the ones that don't expel a lot of plastic into the ocean (for instance, the United States and China). This is unsurprising because they have a finite amount of plastic, and there's no need to expel it into the ocean, if they're exporting it. However, on the other end of the spectrum, there are countries that export very little of their plastic which expel more into the ocean (for instance the Philippines, and Suriname). **SOMETHING ABOUT IMPORTS FROM ABOVE??**
+
+The figure above demonstrates the trend between exported plastic and plastic that ends up in the ocean. The countries that export the most plastic are also the ones that don't expel a lot of plastic into the ocean (for instance, the United States and China). This is unsurprising because they have a finite amount of plastic, and there's no need to expel it into the ocean, if they're exporting it. However, on the other end of the spectrum, there are countries that export very little of their plastic which expel more into the ocean (for instance the Philippines, and Suriname). This suggests that plastic expelled into the ocean by low-export countries is most likely to be plastic exported by high-export countries. 
+
+As such, it is important for wealthier countries to recognize the extent to which they contribute to global plastic waste, even though on a country-level scale, it may seem as if plastic is being properly disposed of. In fact, it is a shared global responsibility to ensure that plastic is properly disposed of, instead of being exported to countries which will dispose of it into the ocean. Several steps can be taken to reduce plastic waste and improve waste management systems which will be further discussed below. 
 
 
 ## Have innovations in plastic reducing technologies increased lately? Are there emerging technologies that can help clean plastic waste in oceans? 
@@ -259,7 +210,7 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-As we can see here, the visualization above emphasizes how innovations in technologies that reduce plastic waste are increasing in modern times compared to the 1990s. It also helps in decoding areas, such as, plastic conversion/leakage removal, that need improvements in innovations (has least amount of innovations: 197) so that we can create a circular economy (eliminate the concept of waste).If we look at the best invested innovation sectors in waste management types, combined Prevention and Recycling wins it! In fact, this is very important because if we solve the root cause of plastic waste pollution, none of it will dwell into the oceans. 
+As we can see here, the visualization above emphasizes how innovations in technologies that reduce plastic waste are increasing in modern times compared to the 1990s. It also helps in decoding areas, such as, plastic conversion/leakage removal, that need improvements in innovations (has least amount of innovations: 197) so that we can create a circular economy (eliminate the concept of waste). If we look at the best invested innovation sectors in waste management types, combined Prevention and Recycling wins it! In fact, this is very important because if we solve the root cause of plastic waste pollution, none of it will dwell into the oceans. 
 
 Next, we need to understand what technologies are being invented in waste management types, such as, waste prevention, to combat plastic waste in ocean? As mentioned at the bottom of the visualization, there are new technologies such as CAT-HTR which is to convert all types of plastic back into the chemicals and oil it was composed of. We know that conversion of plastic/leakage removal has lowest innovations, however, this one technology can revolutionize this sector in plastic reduction. To create a compelling plan of action in plastic waste management, we need to look into the countries which have best waste management strategies/policies so that other countries could mimic that. 
 
@@ -405,26 +356,31 @@ From this visualization, we can see that leading countries in recycling having c
 
 WRITE ABOUT EACH LIMITATIONS FROM SECTION ABOVE ABOUT VALIDITY AND RELIABILITY OF OUR VISUALIZATION, AND END OFF ON HOW NEXT TIME WE COULD IMPROVE
 
-## Conclusion 
+## Key Takeaways
 
-Based on our findings, we determined that although the majority of global plastic emission comes from developing nations particularly in southeast Asia, it does not depict an accurate picture as to who are ultimately responsible for the ever-increasing global plastic emission. We found that North American and European countries tend to export the majority of their emissions to Asian countries as opposed to self-disposal. Similarly, emissions from countries such as Malaysia and the Philippines tend to originate from foreign nations who export their waste to willing nations in exchange for economic gain. Fortunately with the use of modern technology, high-emission nations may implement more efficient systems and emulate waste management strategies from exemplary nations to reduce mismanaged waste.
+Based on our findings, we determined that although the majority of ocean plastic comes from developing nations particularly in southeast Asia, it does not depict an accurate picture as to who are ultimately responsible for the ever-increasing ocean plastics. We found that North American and European countries tend to export the majority of their emissions to Asian countries as opposed to self-disposal. Similarly, emissions from countries such as Malaysia and the Philippines tend to originate from foreign nations who export their waste to willing nations in exchange for economic gain. Fortunately with the use of modern technology, high-emission nations may implement more efficient systems and emulate waste management strategies from exemplary nations to reduce mismanaged waste.
 
 \newpage 
 
 ## References 
 
-Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
-
-"Global Plastics Outlook: Worldwide patented inventions in environmentally relevant plastics technologies, 1990-2017." OECDiLibrary, 22 Feb. 2022, www.oecd-ilibrary.org/environment/innovation-in-plastics-prevention-and-recycling-have-grown-the-most_3e4e50b4-en.
-
-“Plastic or Rubber Exports by Country.” Plastic or Rubber Exports by Country US$000 2020 | WITS Data, https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub#. 
-
-Ritchie, Hannah, and Max Roser. “Plastic Pollution.” Our World in Data, 1 Sept. 2018, https://ourworldindata.org/plastic-pollution. 
-
-Hazlegreaves, Steph. “Which Countries Are the Most Efficient at Minimising Waste?” Open Access Government, 19 Oct. 2020, https://www.openaccessgovernment.org/which-countries-are-the-most-efficient-at-minimising-waste/96037/. 
+BigRentz, BigRentz. “Bigrentz.” BigRentz, 15 Oct. 2021, https://www.bigrentz.com/blog/smart-waste-management. 
 
 City of Toronto. “Solid Waste Reports &amp; Diversion Rates.” City of Toronto, 11 Apr. 2022, https://www.toronto.ca/services-payments/recycling-organics-garbage/solid-waste-reports/. 
 
 Epa, Nsw. “The Waste Hierarchy.” NSW Environment Protection Authority, 20 Oct. 2022, https://www.epa.nsw.gov.au/your-environment/recycling-and-reuse/warr-strategy/the-waste-hierarchy. 
 
-BigRentz, BigRentz. “Bigrentz.” BigRentz, 15 Oct. 2021, https://www.bigrentz.com/blog/smart-waste-management. 
+"Global Plastics Outlook: Worldwide patented inventions in environmentally relevant plastics technologies, 1990-2017." OECDiLibrary, 22 Feb. 2022, www.oecd-ilibrary.org/environment/innovation-in-plastics-prevention-and-recycling-have-grown-the-most_3e4e50b4-en.
+
+Hazlegreaves, Steph. “Which Countries Are the Most Efficient at Minimising Waste?” Open Access Government, 19 Oct. 2020, https://www.openaccessgovernment.org/which-countries-are-the-most-efficient-at-minimising-waste/96037/. 
+
+Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
+
+“Plastic or Rubber Exports by Country.” Plastic or Rubber Exports by Country US$000 2020 | WITS Data, https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub#. 
+
+Ritchie, Hannah, and Max Roser. “Plastic Pollution.” Our World in Data, 1 Sept. 2018, https://ourworldindata.org/plastic-pollution. 
+
+
+
+
+
