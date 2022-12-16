@@ -277,6 +277,8 @@ Based on our findings, we determined that although the majority of global plasti
 
 ## References 
 
-1. Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
-2. Plastic or rubber exports by country. Plastic or Rubber Exports by country US$000 2020 | WITS Data. (n.d.). Retrieved December 16, 2022, from https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub# 
-3. Ritchie, H., &amp; Roser, M. (2018, September 1). Plastic pollution. Our World in Data. Retrieved December 16, 2022, from https://ourworldindata.org/plastic-pollution 
+Lowe, Andrea. “Increasing the Timeout for Shiny Server – Domino Support.” Domino, 2020, https://tickets.dominodatalab.com/hc/en-us/articles/360058494751-Increasing-the-timeout-for-Shiny-Server.
+
+“Plastic or Rubber Exports by Country.” Plastic or Rubber Exports by Country US$000 2020 | WITS Data, https://wits.worldbank.org/CountryProfile/en/Country/WLD/Year/LTST/TradeFlow/Export/Partner/by-country/Product/39-40_PlastiRub#. 
+
+Ritchie, Hannah, and Max Roser. “Plastic Pollution.” Our World in Data, 1 Sept. 2018, https://ourworldindata.org/plastic-pollution. 
