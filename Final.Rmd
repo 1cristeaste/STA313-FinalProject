@@ -29,6 +29,10 @@ library(magrittr)
 library(readxl)
 library(sf)
 library(spData)
+library(ggpattern)
+library(readr)
+library(png)
+library(magick)
 ```
 
 ```{r setup, echo=FALSE, include=FALSE}
@@ -226,7 +230,6 @@ ui <- fluidPage(
 
     # Application title
     titlePanel("Waste Treatment Strategies Across Countries"),
-
     sidebarLayout(position = "right",
         sidebarPanel(radioButtons(inputId = "wts", 
                                   "Waste Treatment Strategy",
@@ -250,12 +253,10 @@ ui <- fluidPage(
                      em(textOutput("CountryText", inline=T)),
                      br(),
                      strong("Waste Management Policy:"),
-                     textOutput("WMP_URL"),
-                     tags$a(href=textOutput("WMP_URL", inline=T), "Click here!"),
+                     a(textOutput("WMPURL")),
                      br(),
                      strong("Recycling Program:"),
-                     textOutput("RP_URL"),
-                     tags$a(href=textOutput("RP_URL", inline=T), "Click here!")),
+                     a(textOutput("RPURL"))),
         # Show a plot of the generated distribution
         mainPanel( plotOutput(outputId = "graph6",  width = "100%")
         )
@@ -269,11 +270,11 @@ server <- function(input, output) {
     output$graph6 <- renderPlot({
         if (is.null(input$choiceSelectize)) {
             filter_country <- graph6_data %>%
-            select(Country, input$wts, WMRP_Link, RP_link)
+            select(Country, input$wts)
         } else {filter_country <- graph6_data %>% 
                 filter(Country %in% input$choiceSelectize) %>%
-                select(Country, input$wts, WMRP_Link, RP_link)}
-        
+                select(Country, input$wts)}
+
         # change attributes specific to each waste management category 
         if (input$wts == "Incineration_with_energy_recovery"){
             y_label <- "Incineration With Energy Recovery Rate (in %)"
@@ -329,22 +330,22 @@ server <- function(input, output) {
         # set the height and width of this ggplot
     }, height = 600, width = 800 )
     
-    output$CountryText <- renderPrint({
-        paste(input$SelCountry)
+    output$CountryText <- renderText({
+        paste0(input$SelCountry)
     })
     
-    output$WMPURL <- renderPrint({
-        data_row <- filter_country %>% filter(Country == input$SelCountry)
-        data_row[WMRP_Link]
-        print(data_row[WMRP_Link])
+    output$WMPURL <- renderText({
+        data_row <- graph6_data %>% filter(Country == input$SelCountry)
+        (paste0(data_row[9]))
     })
     
-    output$RPURL <- renderPrint({
-        data_row <- filter_country %>% filter(Country == input$SelCountry)
-        data_row[RP_link]
+    output$RPURL <- renderText({
+        data_row <- graph6_data %>% filter(Country == input$SelCountry)
+        (paste0(data_row[10]))
     })
     
     }
+
 
 # Run the application 
 shinyApp(ui = ui, server = server)
