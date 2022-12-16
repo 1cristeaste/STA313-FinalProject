@@ -53,12 +53,18 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-```{r, echo=FALSE}
+
 # VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
 
-```
+The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country produces that ends up in the ocean.
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<div class='tableauPlaceholder' id='viz1671149266138' style='position: relative'><noscript><a href='#'><img alt='Ocean Plastic Waste Production by Country ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Oc&#47;OceanPlasticWasteProductionbyCountry&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='OceanPlasticWasteProductionbyCountry&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Oc&#47;OceanPlasticWasteProductionbyCountry&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                
+
+```{js, embedcode, echo=FALSE}
+                   var divElement = document.getElementById('viz1671149266138');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                
+```                
+By far, the top producer of plastic waste that ends up in the ocean is the Philippines, producing 356,371 tons. This is almost three times the amount of the second highest producer, India. About 10 countries produce the bulk of the world’s plastic waste in oceans, most of which are in Asia. Only two of these countries are in the top ten for plastic waste production per capita: the Philippines and Malaysia. Most of the countries that have the highest waste per capita are tiny, developing countries such as Suriname, Saint Lucia, and Grenada, and have negligible total waste. People tend to focus on reducing plastic waste in the oceans by the countries that are the biggest producers, such as the top ten. In particular, the Philippines has the highest total waste production as well as the highest per capita waste production, so intervening there should be the first step.
 
 ## How do plasic imports and explorts affect countries' ultimate responsibilities for plastic pollution?
 
