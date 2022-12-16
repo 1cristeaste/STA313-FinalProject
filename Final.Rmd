@@ -45,7 +45,7 @@ Plastic has become a vital aspect in our everyday life. Its extensive range of a
 
 # Which Countries Contribute the Most Ocean Plastic?
 
-The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country emits that ends up in the ocean.
+The following visualization provides more detail on which country contributes plastic to the ocean. 
 
 <div class='tableauPlaceholder' id='viz1671150091058' style='position: relative'>
 <noscript>
