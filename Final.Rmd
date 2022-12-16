@@ -2,8 +2,45 @@
 title: "Investigating Global Plastic Emissions in the Ocean"
 author: "Team Diamond Ocean: Purumidha Sharma, Sanjana Girish, Stephanie Cristea, Anita Zabojnikova, Andrew Gritsevskiy, and Danur Mahendra"
 output: html_document
-date: "2022-12-15"
+runtime: shiny
+date: "Date Published: 16th November, 2022"
 ---
+
+<style type="text/css">
+
+p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0px 0px 12px 0px;
+}
+
+h1, h2, h3, h4, h5, h6, legend {
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 20;
+    color: #8097d3;
+}
+
+
+h1.title {
+  font-size: 38px;
+  font-style: bold;
+  color: darkBlue;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+    font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: darkBlue;
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+  color: blue;
+  text-align: center;
+}
+</style>
 
 
 ```{r, echo=FALSE, warning = FALSE, message = FALSE}
@@ -350,12 +387,11 @@ server <- function(input, output) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
-From this visualization, we can see that leading countries in recycling having clear policy objectives, bigger government funding to invest in emerging technologies like CAT-HTR and focus on producer responsibility. However, there is no country that is excelling in all waste management strategies. Some countries focus more on incinerating waste and funding is focused more towards waste minimization rather than recovery. Other countries allocate a higher budget towards waste recovery, implementing interesting techniques like smart waste bins, pneumatic waste pipes E-waste kiosks. 
+From this visualization, we can see that leading countries in recycling having clear policy objectives, bigger government funding to invest in emerging technologies like CAT-HTR and focus on producer responsibility. However, there is no country that is excelling in all waste management strategies. Some countries focus more on incinerating waste, and funding is focused more towards waste minimization rather than recovery. Other countries allocate a higher budget towards waste recovery, implementing interesting techniques like smart waste bins, pneumatic waste pipes E-waste kiosks. In terms of the best policies, we can see above that Germany has better waste management strategies compared to United States. Through research, it's found that Germany has a policy called "Green Dot" which revolves around the crux that manufacturers and retailers will need to pay more if they are using plastics anywhere in their products. This leads to less plastic waste, and therefore creating less garbage to be recycled. The net result: "a drastic decline of about one million tons less garbage than normal every year" (*All about recycling in Germany* 2022). It is surprising to see that Korea has the best waste management strategies despite highly powerful countries which breed on innovation and technology such as, United States. Korea has a "pay-to-throw" policy which is if you have bought plastic, and need to dispose it, you will need to pay thrice the amount you bought it in for. This discourages use of plastic in the first place. These are some of the most effective waste management strategies from countries that can handle it the best. This policies should be mimicked in countries that are not able to manage plastic waste properly, such as, America, Canada, and Turkey.
+
 ## Limitations and Future Considerations  
 
-WRITE ABOUT EACH LIMITATIONS FROM SECTION ABOVE ABOUT VALIDITY AND RELIABILITY OF OUR VISUALIZATION, AND END OFF ON HOW NEXT TIME WE COULD IMPROVE
-
-There are some limitations that are important to keep in mind when viewing the visualizations. For the visualization that examines which countries emit plastic into the ocean, the scales for the left and right x-axes are different, while a reader may make an initial assumption that they are the same and the values are comparable. The second visualization normalizes the imports and exports so that they all fit on the graph, but this means the y-axis has no relevant meaning and does not provide information on the amounts that are produced and exported. Further, there are so many countries that neither produce nor export much plastic that the lines at the bottom of the graph are difficult to distinguish.
+There are some limitations that are important to keep in mind when viewing the visualizations. For the visualization that examines which countries emit plastic into the ocean, the scales for the left and right x-axes are different, while a reader may make an initial assumption that they are the same and the values are comparable. The second visualization normalizes the imports and exports so that they all fit on the graph, but this means the y-axis has no relevant meaning and does not provide information on the amounts that are produced and exported. Further, there are so many countries that neither produce nor export much plastic that the lines at the bottom of the graph are difficult to distinguish. Given a chance, we would try 
 
 ## Key Takeaways
 
