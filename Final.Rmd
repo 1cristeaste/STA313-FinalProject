@@ -43,9 +43,9 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE,
 Plastic has become a vital aspect in our everyday life. Its extensive range of applications allows for economic growth and is therefore a crucial component to many industrial and commercial purposes. However, most types of plastic contain non-biodegradable materials which require additional care for proper disposal. Wealthier nations who can afford to offload their share of the burden often do so at the expense of developing nations. In many cases, developing nations import plastic waste out of necessity in exchange for monetary benefits but do not have the capacity for a proper disposal, meaning a significant portion gets expelled to the ocean. This presents the image that developing nations, particularly in the South-Eastern Asia area, are ultimately responsible for the majority of ocean waste. In this data-driven article, we will first examine the origins of ocean plastic and how nations use international trade as a means to dispose of their plastic emission. We will present innovative new technologies on the rise, as well as some of the best waste management policies that corporations and global leaders can mimic. Ultimately, plastic emissions has a global effect, and it's in the best interest of everyone to minimize plastic waste expelled to the ocean. 
 
 
-# Which Countries Contribute the Most Ocean Plastic?
+## Which Countries Contribute the Most Ocean Plastic?
 
-The following visualization provides more detail on which country contributes plastic to the ocean. 
+
 
 <div class='tableauPlaceholder' id='viz1671150091058' style='position: relative'>
 <noscript>
@@ -77,7 +77,7 @@ scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 vizElement.parentNode.insertBefore(scriptElement, vizElement);               
 ```
               
-By far, the top producer of plastic waste that ends up in the ocean is the Philippines, producing 356,371 tons. This is almost three times the amount of the second highest producer, India. About 10 countries produce the bulk of the world’s plastic waste in oceans, most of which are in Asia. Only two of these countries are in the top ten for plastic waste production per capita: the Philippines and Malaysia. Most of the countries that have the highest waste per capita are tiny, developing countries such as Suriname, Saint Lucia, and Grenada, and have negligible total waste. As a result, a natural supposition is that these countries are in the most need of a waste emission and production intervention. However, this fails to account for plastic waste that is imported by these countries. The following visualizations will attempt to investigate where these plastic emissions are actually coming from. 
+The visualization above provides more detail on which country contributes plastic to the ocean. By far, the top producer of plastic waste that ends up in the ocean is the Philippines, producing 356,371 tons. This is almost three times the amount of the second highest producer, India. About 10 countries produce the bulk of the world’s plastic waste in oceans, most of which are in Asia. Only two of these countries are in the top ten for plastic waste production per capita: the Philippines and Malaysia. Most of the countries that have the highest waste per capita are tiny, developing countries such as Suriname, Saint Lucia, and Grenada, and have negligible total waste. As a result, a natural supposition is that these countries are in the most need of a waste emission and production intervention. However, this fails to account for plastic waste that is imported by these countries. The following visualizations will attempt to investigate where these plastic emissions are actually coming from. 
 
 ## How do plastic imports and exports affect countries' ultimate responsibilities for plastic pollution?
 
