@@ -397,6 +397,8 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
+From this visualization, we can see that leading countries in recycling having clear policy objectives, bigger government funding to invest in emerging technologies like CAT-HTR and focus on producer responsibility. However, there is no country that is excelling in all waste management strategies. Some countries focus more on incinerating waste, and funding is focused more towards waste minimization rather than recovery. Other countries allocate a higher budget towards waste recovery, implementing interesting techniques like smart waste bins, pneumatic waste pipes E-waste kiosks. 
 ```
 
 ## Conclusion 
