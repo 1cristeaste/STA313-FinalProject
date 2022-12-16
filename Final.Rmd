@@ -56,7 +56,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 # VISUALIZATION 2: WHICH COUNTRIES PUT THE MOST/LEAST PLASTIC INTO THE OCEAN? ANITA
 
-The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country produces that ends up in the ocean.
+The following visualization provides more detail on who contributes this plastic to the ocean. The plot shows the plastic waste that each country emits that ends up in the ocean.
 
 <div class='tableauPlaceholder' id='viz1671150091058' style='position: relative'>
 <noscript>
